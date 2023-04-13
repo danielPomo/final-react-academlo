@@ -31,12 +31,12 @@ const Home = () => {
   return (
     <div>
       <Container>
-        <Row className="py-3">
+        <Row className="py-3" xs={1} md={2} lg={5}>
           {categories.map((category) => {
             return (
               <Col key={category.id}>
                 <Button
-                  className="w-100"
+                  className="w-100 my-3"
                   onClick={() => dispatch(filterCategoriesThunk(category.id))}
                 >
                   {category.name}
@@ -46,7 +46,7 @@ const Home = () => {
           })}
          <Col>
                 <Button
-                  className="w-100"
+                  className="w-100 my-3"
                   onClick={() => dispatch(getProductsThunk())}
                 >
                   All
