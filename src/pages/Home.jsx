@@ -13,6 +13,7 @@ import {
 } from "../store/slices/products.slice";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const products = useSelector((state) => state.products);
@@ -72,16 +73,21 @@ const Home = () => {
           {products.map((product) => {
             return (
               <Col className="mb-2" key={product.id}>
-                <Card>
+                <Card className="d-flex flex-column" style={{height: "100%"}}>
                   <Card.Img
+                    className="py-3 align-self-center"
                     variant="top"
                     src={product.images[0].url}
-                    style={{ height: 200, objectFit: "cover" }}
+                    style={{width: "50%", objectFit: "cover" }}
                   />
-                  <Card.Body>
+                  <Card.Body className="d-flex flex-column justify-content-between">
                     <Card.Title>{product.title}</Card.Title>
-                    <Card.Text>{product.description}</Card.Text>
-                    <Button variant="primary">See More</Button>
+                    <Card.Text className="text-truncate">{product.description}</Card.Text>
+                    <Button 
+                    variant="primary"
+                    as={Link}
+                    to = {`/products/${product.id}`}
+                    >See More</Button>
                   </Card.Body>
                 </Card>
               </Col>
